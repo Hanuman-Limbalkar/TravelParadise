@@ -1,0 +1,120 @@
+<?php session_start(); ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Travel Paradise - Hotel Search</title>
+  <link rel="stylesheet" href="style1.css">
+</head>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    background: #f4f4f4;
+}
+
+/* Container Styling */
+.container {
+    max-width: 600px;
+    width: 100%;
+    background: #fff;
+    padding: 40px 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    background-image: linear-gradient(to right, #ffe8d6, #ffffff);
+}
+
+/* Heading */
+.container h2 {
+    color: #ff6347;
+    font-weight: bold;
+    margin-bottom: 30px;
+    font-size: 28px;
+    text-align: center;
+}
+
+/* Form Elements */
+.form-group {
+    margin-bottom: 25px;
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus {
+    border-color: #ff6347;
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 99, 71, 0.2);
+}
+
+/* Submit Button */
+.btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn-success {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+}
+</style>
+<body class="bg-light">
+  <nav>
+    <div class="logo">
+        <h1>Travel Paradise</h1>
+    </div>
+    <ul>
+          <li><a href="index.php">Home</a></li>
+            <li><a href="destination.html">Destinations</a></li>
+            <li> <a href="display.php">Feedbacks</a></li>
+            <li><a href="explore.html">Explore</a></li>
+            <li><a href="index1.html">Weather</a></li>
+            <li><a href="book.html">Book Hotels</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="logout.php">Logout</a></li>
+    </ul>
+</nav>
+<div class="container py-5">
+  <h2 class="mb-4 text-center">🌴 Travel Paradise - Find Hotels</h2>
+  <form action="fetch_hotels.php" method="GET">
+    <div class="form-group">
+      <label for="location">Enter a City:</label>
+      <input type="text" class="form-control" id="location" name="location" placeholder="e.g. Mumbai, Goa, Jaipur" required>
+      <?php if (isset($_SESSION['user_email'])): ?>
+      <li><a href="booking-history.php">📖 My Bookings</a></li>
+    <?php endif; ?>
+    </div>
+    <button type="submit" class="btn btn-success btn-block">Search Hotels</button>
+  </form>
+</div>
+</body>
+</html>

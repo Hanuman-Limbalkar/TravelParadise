@@ -1,0 +1,59 @@
+<?php
+session_start();
+if (isset($_SESSION['username'])) {
+    header("Location: index.php"); // Redirect to homepage if logged in
+    exit();
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Travel Paradise</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+
+    <video autoplay muted loop playsinline class="bg-video">
+        <source src="back.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="content-wrapper">
+        <nav>
+            <div class="logo">
+                <h1>Travel Paradise</h1>
+            </div>
+            <ul>
+                <li><a href="signup.html">Sign Up</a></li>
+            </ul>
+        </nav>
+
+        <!-- Login Form -->
+        <section class="auth">
+            <h2>Welcome Back!</h2>
+            <form action="login.php" method="post">
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" placeholder="Enter your username" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="btn">Login</button>
+            </form>
+            <p>If you're new then signup first <a href="signup.html">Signup</a></p>
+        </section>
+
+        <footer>
+            <div class="footer-content">
+                <p>&copy; 2025 Travel Paradise | All Rights Reserved</p>
+            </div>
+        </footer>
+    </div>
+
+</body>
+</html>

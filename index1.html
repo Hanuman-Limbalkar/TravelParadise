@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LiveWeather</title>
+    <link rel="stylesheet" href="index1.css"/>
+    <link rel="icon" href="ic.png">
+</head>
+<style>
+    nav {
+        background: transparent;
+        padding: 20px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        
+        /* ✅ Fix the nav at top */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    nav .logo h1 {
+        color: white;
+        font-size: 2rem;
+        font-weight: 600;
+    }
+    
+    nav ul {
+        list-style: none;
+        display: flex;
+    }
+    
+    nav ul li {
+        margin-left: 20px;
+    }
+    
+    nav ul li a {
+        color: white;
+        font-weight: 500;
+        font-size: 1rem;
+        padding: 8px 16px;
+        text-decoration: none;
+        transition: background 0.3s ease;
+    }
+    
+    nav ul li a:hover {
+        background-color: #e5533d;
+        border-radius: 4px;
+    }
+    .title{
+        margin-top: 100px;
+    }
+    
+</style>
+<body>
+    <nav>
+        <div class="logo">
+            <h1>Travel Paradise</h1>
+        </div>
+        <ul>
+            <li><a href="index.php">Home</a></li>
+            <li><a href="destination.html">Destinations</a></li>
+            <li> <a href="display.php">Feedbacks</a></li>
+            <li><a href="explore.html">Explore</a></li>
+            <li><a href="index1.html">Weather</a></li>
+            <li><a href="book.html">Book Hotels</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="logout.php">Logout</a></li>
+        </ul>
+    </nav>
+    <h1 class="title">Weather Watch</h1>
+    <div class="card">
+        <div class="search">
+            <input type="text" placeholder="Enter the City Name" spellcheck="false">
+            <button><img src="images/search.png" alt=""></button>
+        </div>
+        <div class="error">
+            <p>Invalid City Name</p>
+        </div>
+        <div class="weather">
+            <img src="images/rain.png" class="weather-icon">
+            <h1 class="temp">22℃</h1>
+            <h2 class="city">PARBHANI</h2>
+            <div class="details">
+                <div class="col">
+                    <img src="images/humidity.png" alt="#">
+                    <div>
+                        <p class="humidity">50%</p>
+                        <p>Humidity</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <img src="images/wind.png">
+                    <div>
+                        <p class="wind">50 km/hr</p>
+                        <p>Wind Speed</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+       const apikey = "28232173929d9e5e8b316bc6c5e0ddc9";
+const apiurl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
+
+const searchBox = document.querySelector(".search input");
+const searchBtn = document.querySelector(".search button");
+const weatherIcon = document.querySelector(".weather-icon");
+
+async function checkWeather(city) {
+    const response = await fetch(apiurl + city + `&appid=${apikey}`);
+
+    if (response.status == 404) {
+        document.querySelector(".error").style.display = "block";
+        document.querySelector(".weather").style.display = "none";
+    } else {
+        const data = await response.json();
+
+        document.querySelector(".city").innerHTML = data.name;
+        document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "℃";
+        document.querySelector(".humidity").innerHTML = data.main.humidity + "%";
+        document.querySelector(".wind").innerHTML = data.wind.speed + " km/h";
+
+        switch (data.weather[0].main) {
+            case "Clouds":
+                weatherIcon.src = "images/clouds.png";
+                break;
+            case "Clear":
+                weatherIcon.src = "images/clear.png";
+                break;
+            case "Rain":
+                weatherIcon.src = "images/rain.png";
+                break;
+            case "Drizzle":
+                weatherIcon.src = "images/drizzle.png";
+                break;
+            case "Mist":
+                weatherIcon.src = "images/mist.png";
+                break;
+            default:
+                weatherIcon.src = "images/default.png"; // Optional: add a default image for other conditions
+                break;
+        }
+
+        document.querySelector(".weather").style.display = "block";
+        document.querySelector(".error").style.display = "none";
+    }
+}
+
+searchBtn.addEventListener("click", () => {
+    checkWeather(searchBox.value);
+});
+
+    </script>
+</body>
+</html>

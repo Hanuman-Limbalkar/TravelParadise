@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Travel Paradise</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- 🌍 Navbar -->
+    <nav>
+        <div class="logo">
+            <h1>Travel Paradise</h1>
+        </div>
+        <ul>
+            <li><a href="index.php">Home</a></li>
+            <li><a href="destination.html">Destinations</a></li>
+            <li> <a href="display.php">Feedbacks</a></li>
+            <li><a href="explore.html">Explore</a></li>
+            <li><a href="index1.html">Weather</a></li>
+            <li><a href="book.html">Book Hotels</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="logout.php">Logout</a></li>
+        </ul>
+    </nav>
+
+    <section class="contact-container">
+        <h2>Get in Touch</h2>
+        <p>Have questions or need help? Fill out the form and we'll get back to you soon.</p>
+        
+        <form action="contact.php" method="post">
+            <div class="input-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+            </div>
+            <div class="input-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="input-group">
+                <label for="message">Your Message</label>
+                <textarea id="message" name="message" rows="5" placeholder="Enter your message" required></textarea>
+            </div>
+            <button type="submit" class="btn">Send Message</button>
+        </form>
+    </section>
+
+    <!-- 🗺️ Google Map (Optional) -->
+    <section class="map-container">
+        <h3>Our Location</h3>
+        <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3783.176631208622!2d73.85674371489204!3d18.520430087399697!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c07c03bbd079%3A0x36a1b7037b6a2fc!2sPune%2C+Maharashtra%2C+India!5e0!3m2!1sen!2sin!4v1631527923705!5m2!1sen!2sin" 
+        width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy">
+    </iframe>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Travel Paradise | All Rights Reserved</p>
+            <div class="social-icons">
+                <a href="https://www.instagram.com" target="_blank" class="social-icon instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.facebook.com" target="_blank" class="social-icon facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.linkedin.com" target="_blank" class="social-icon linkedin">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="mailto:hglimbalkar@gmail.com" class="social-icon email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+            <p>Contact us: <a href="mailto:hglimbalkar@gmail.com">hglimbalkar@gmail.com</a></p>
+        </div>
+    </footer>
+
+</body>
+</html>

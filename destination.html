@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Destination</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+<style>
+    /* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: #f0f8ff;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Navigation Bar */
+nav {
+    background-color: #0077b6;
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+nav .logo h1 {
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 14px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #023e8a;
+}
+
+/* Form Section */
+.destination-form {
+    max-width: 700px;
+    margin: 40px auto;
+    background: white;
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.destination-form h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #0077b6;
+}
+
+.destination-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.destination-form label {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.destination-form input,
+.destination-form textarea,
+.destination-form select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    margin-top: 5px;
+}
+
+.destination-form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.destination-form button {
+    margin-top: 20px;
+    background-color: #0077b6;
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.destination-form button:hover {
+    background-color: #005f87;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav ul {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .destination-form {
+        padding: 20px;
+        margin: 20px;
+    }
+}
+
+</style>
+<body>
+
+    <nav>
+        <div class="logo">
+            <h1>Travel Paradise</h1>
+        </div>
+        <ul>
+            <li><a href="index.php">Home</a></li>
+            <li><a href="destination.html">Destinations</a></li>
+            <li> <a href="display.php">Feedbacks</a></li>
+            <li><a href="explore.html">Explore</a></li>
+            <li><a href="index1.html">Weather</a></li>
+            <li><a href="book.html">Book Hotels</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="logout.php">Logout</a></li>
+        </ul>
+    </nav>
+
+    <section class="destination-form">
+        <h2>Add Your Destination</h2>
+        <form action="save_destination.php" method="POST" enctype="multipart/form-data">
+            <div class="name-field-container">
+                <label>Name:</label>
+                <input type="text" name="name" required>
+            </div>
+            
+
+            <label>Start Point:</label>
+            <input type="text" name="start_point" required>
+
+            <label>Destination:</label>
+            <input type="text" name="destination" required>
+
+            <label>Upload Image:</label>
+            <input type="file" name="image" required>
+
+            <label>Budget:</label>
+            <input type="number" name="budget" required>
+
+            <label>Experience:</label>
+            <textarea name="experience" required></textarea>
+
+            <label>Rating (1 to 5):</label>
+            <select name="rating" required>
+                <option value="1">⭐</option>
+                <option value="2">⭐⭐</option>
+                <option value="3">⭐⭐⭐</option>
+                <option value="4">⭐⭐⭐⭐</option>
+                <option value="5">⭐⭐⭐⭐⭐</option>
+            </select>
+
+            <button type="submit" name="submit">Add Destination</button>
+        </form>
+    </section>
+
+</body>
+</html>
